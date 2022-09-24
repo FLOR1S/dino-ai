@@ -78,7 +78,7 @@ class GameScreen(arcade.Window):
         self.player.update()
 
         # Update score
-        # TODO: Show score during game
+        # TODO: Make scores smaller?
         self.score += 1
         self.score_label.text = str(self.score)
 

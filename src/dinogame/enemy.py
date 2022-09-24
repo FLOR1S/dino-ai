@@ -15,12 +15,14 @@ class Enemy(arcade.Sprite):
 
         # Set physics
         self.dt = 1.0
-        self.sx = randint(SPAWN_MIN_X, SPAWN_MAX_X) + self.width/2
+        self.sx = 150*randint(SPAWN_MIN_X/150, SPAWN_MAX_X/150) + self.width/2 
         self.sy = ENEMY_TYPES[self.type]['sy'] + self.height/2
         self.vx = ENEMY_TYPES[self.type]['vx']
         self.vy = ENEMY_TYPES[self.type]['vy']
         self.ax = ENEMY_TYPES[self.type]['ax']
         self.ay = ENEMY_TYPES[self.type]['ay']
+        # TODO: Create space between enemies
+        # cactus + bird3 in same x-position creates impossible situation
 
         # Update sprite location
         self.center_x = self.sx
