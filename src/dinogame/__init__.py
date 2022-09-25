@@ -27,7 +27,7 @@ SPAWN_MAX_X = 2*X_MAX
 ENEMY_TYPES = [
     {
         'image': './resources/enemies/bird.png',
-        'sy': randint(0, 2)*150+100, # Make birds appear at three different heights
+        'sy': randint(0, 2)*64+100, # Make birds appear at three different heights
         'vx': 0,
         'vy': 0,
         'ax': 0,
@@ -45,7 +45,7 @@ ENEMY_TYPES = [
 
 # Game constants
 GROUND_HEIGHT = 100
-JUMP_VELOCITY = 25
+JUMP_VELOCITY = 20
 GRAVITY = -1
 PLAYER_X = 100
 PLAYER_VX = 8
