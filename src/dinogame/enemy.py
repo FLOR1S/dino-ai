@@ -15,7 +15,7 @@ class Enemy(arcade.Sprite):
 
         # Set physics
         self.dt = 1.0
-        self.sx = 150*randint(SPAWN_MIN_X/150, SPAWN_MAX_X/150) + self.width/2 
+        self.sx = 250*randint(SPAWN_MIN_X/250, SPAWN_MAX_X/250) + self.width/2 
         self.sy = ENEMY_TYPES[self.type]['sy'] + self.height/2
         self.vx = ENEMY_TYPES[self.type]['vx']
         self.vy = ENEMY_TYPES[self.type]['vy']
