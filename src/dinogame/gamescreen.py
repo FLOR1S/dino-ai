@@ -13,10 +13,11 @@ class GameScreen(arcade.Window):
         """
 
         # Call the parent class constructor
+            #what dis mean
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
         # Setup empty sprite lists
-        self.backgrounds_list = arcade.SpriteList()  # List of background objects
+        self.backgrounds_list = arcade.SpriteList()  # List of background objects [ground n such?]
         self.enemies_list = arcade.SpriteList()  # List of enemy objects
         self.player = None  # Create player in setup()
         self.score = 0
@@ -29,6 +30,7 @@ class GameScreen(arcade.Window):
         """Create the game objects
         """
         # TODO: Check existing lengths
+            #scuzi? what dis mean?
 
         # Add players
         self.player = Player()
@@ -67,6 +69,9 @@ class GameScreen(arcade.Window):
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.UP:
             self.player.jump()
+        #TODO: ducking?
+        if symbol == arcade.key.DOWN:
+            self.player.duck()
 
     def update(self, dt):
         """ Movement and game logic """
@@ -80,7 +85,7 @@ class GameScreen(arcade.Window):
         # Update score
         # TODO: Make scores smaller?
         self.score += 1
-        self.score_label.text = str(self.score)
+        self.score_label.text = str(self.score//10)
 
         # Do collision detection
         hitlist = self.player.collides_with_list(self.enemies_list)
@@ -98,6 +103,10 @@ class GameScreen(arcade.Window):
 
         # Add in new enemies if the enemies_list is no longer full
         # range() loop will be empty if no more enemies (or for negative ranges)
-        for i in range(MAX_ENEMY_COUNT-len(self.enemies_list)):
+        #for i in range(MAX_ENEMY_COUNT-len(self.enemies_list)):
+            #enemy = Enemy()
+            #self.enemies_list.append(enemy)
+            
+        if len(self.enemies_list) < MAX_ENEMY_COUNT:
             enemy = Enemy()
             self.enemies_list.append(enemy)

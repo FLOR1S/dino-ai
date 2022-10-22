@@ -15,7 +15,7 @@ class Enemy(arcade.Sprite):
 
         # Set physics
         self.dt = 1.0
-        self.sx = 250*randint(SPAWN_MIN_X/250, SPAWN_MAX_X/250) + self.width/2 
+        self.sx = 500*randint(SPAWN_MIN_X//500, SPAWN_MAX_X//500) + self.width/2 
         self.sy = ENEMY_TYPES[self.type]['sy'] + self.height/2
         self.vx = ENEMY_TYPES[self.type]['vx']
         self.vy = ENEMY_TYPES[self.type]['vy']
@@ -23,6 +23,7 @@ class Enemy(arcade.Sprite):
         self.ay = ENEMY_TYPES[self.type]['ay']
         # TODO: Create space between enemies
         # cactus + bird3 in same x-position creates impossible situation
+            # randint for time instead of location? countdown? or something?
 
         # Update sprite location
         self.center_x = self.sx
@@ -39,6 +40,7 @@ class Enemy(arcade.Sprite):
         # Update sprite location
         # TODO: Directly use sprite data or
         # write general transformation function
+            #dunno what dis means?
         self.center_x = self.sx
         self.center_y = self.sy
 

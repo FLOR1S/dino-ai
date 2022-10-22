@@ -27,7 +27,23 @@ SPAWN_MAX_X = 2*X_MAX
 ENEMY_TYPES = [
     {
         'image': './resources/enemies/bird.png',
-        'sy': randint(0, 2)*64+100, # Make birds appear at three different heights
+        'sy': 100, # Make birds appear at three different heights
+        'vx': 0,
+        'vy': 0,
+        'ax': 0,
+        'ay': 0,
+    },
+    {
+        'image': './resources/enemies/bird.png',
+        'sy': 164, # Make birds appear at three different heights
+        'vx': 0,
+        'vy': 0,
+        'ax': 0,
+        'ay': 0,
+    },
+    {
+        'image': './resources/enemies/bird.png',
+        'sy': 228, # Make birds appear at three different heights
         'vx': 0,
         'vy': 0,
         'ax': 0,
@@ -45,7 +61,7 @@ ENEMY_TYPES = [
 
 # Game constants
 GROUND_HEIGHT = 100
-JUMP_VELOCITY = 20
+JUMP_VELOCITY = 25
 GRAVITY = -1
 PLAYER_X = 100
 PLAYER_VX = 8
@@ -57,8 +73,8 @@ BACKGROUND_COLOR = color.ALMOND
 # Names
 SCREEN_TITLE = "DinoGame"
 # Counts
-MAX_ENEMY_COUNT = 4
+MAX_ENEMY_COUNT = 3
 
 # DEBUG
-DEBUG = True
+DEBUG = False
 TIMINGS_COUNTER = 1000
