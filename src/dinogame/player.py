@@ -2,7 +2,12 @@ import arcade
 from dinogame import PLAYER_VX, PLAYER_X, X_MIN, X_MAX, GROUND_HEIGHT, JUMP_VELOCITY, GRAVITY
 
 # TODO: Set player state as either RUNNING, DUCKING or JUMPING with according sprites and sizes
+    #self.state or some shit?
+    #if self.sy > GROUND_HEIGHT + self.height/2 state = JUMPING
+    #if key.DOWN = pressed state = DUCKING
+    #else state = RUNNING
 # TODO: Add animation
+    #I have the PNG's for running and jumping
 
 
 class Player(arcade.Sprite):
@@ -44,6 +49,7 @@ class Player(arcade.Sprite):
         self.sy = self.sy + self.vy * self.dt
 
         # TODO: Collision detection, probably automatable
+            #but he die already? that done somewhere else or something?
 
         # Handle ground
         if self.sy < GROUND_HEIGHT + self.height/2:
