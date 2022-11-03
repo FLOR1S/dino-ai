@@ -1,13 +1,13 @@
 from arcade import color
 from random import randint
-# TODO: Load from config
+# TODO: Load from config ???
 
 # Sizes
 SCREEN_WIDTH = 1510
 SCREEN_HEIGHT = 800
 
 # Window constraints
-# TODO: Use window constraints for translating back into frame
+# TODO: Use window constraints for translating back into frame ???
 X_MIN = 10
 X_MAX = SCREEN_WIDTH - 10
 Y_MIN = 10

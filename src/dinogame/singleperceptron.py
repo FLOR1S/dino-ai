@@ -1,11 +1,10 @@
 import random
-x=2 #number of inputs & weights
-weights = [0]*x #list of weights
-a=int(input())
-b=int(input())
-inputs = [a, b] #how do I create a list with x items?
-#TODO: create input list w/ x placeholders and iterate through list for user inputs?
-#how to automate input?
+n_input=3 #number of inputs & weights
+weights = [random.uniform(-1,1) for x in range(n_input)] #list of weights
+inputs = [1]+[int(input("input?")) for x in range(n_input-1)]#how to automate input? 
+
+#print(weights)
+print(inputs)
 
 #activation function
 def sign(n):
@@ -15,18 +14,18 @@ def sign(n):
         return -1
 
 class Perceptron:
-    for i in range(x):
-        #assign random starting values to weights
-        weights[i] = random.uniform(-1, 1)
-    
+    def _init_(self, n_input): #extra argument: actfunc?
+        self.n_input = n_input
+       
 #make a guess based on input and weight
     def guess(inputs):
-        Sum = 0
-        for i in range(x):
-            Sum += inputs[i]*weights[i]
+        Sum = 0.0
+        for i in range(self.n_input):
+            Sum += float(inputs[i])*float(weights[i])
         output = sign(Sum)
         print(output)
         
+
     guess(inputs)
             
 

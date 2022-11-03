@@ -35,7 +35,7 @@ class Player(arcade.Sprite):
 
         # Update sprite location
         # TODO: Directly use sprite data or
-        # write general transformation function
+        # write general transformation function ???
         self.center_x = self.sx
         self.center_y = self.sy
 
@@ -49,7 +49,7 @@ class Player(arcade.Sprite):
         self.sy = self.sy + self.vy * self.dt
 
         # TODO: Collision detection, probably automatable
-            #but he die already? that done somewhere else or something?
+            #???
 
         # Handle ground
         if self.sy < GROUND_HEIGHT + self.height/2:
