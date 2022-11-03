@@ -22,7 +22,6 @@ class Enemy(arcade.Sprite):
         self.ax = ENEMY_TYPES[self.type]['ax']
         self.ay = ENEMY_TYPES[self.type]['ay']
         # TODO: Create space between enemies
-        # cactus + bird3 in same x-position creates impossible situation
             # randint for time instead of location? countdown? or something?
 
         # Update sprite location
@@ -40,7 +39,7 @@ class Enemy(arcade.Sprite):
         # Update sprite location
         # TODO: Directly use sprite data or
         # write general transformation function
-            #dunno what dis means?
+            #???
         self.center_x = self.sx
         self.center_y = self.sy
 

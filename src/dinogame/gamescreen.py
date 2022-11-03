@@ -13,7 +13,7 @@ class GameScreen(arcade.Window):
         """
 
         # Call the parent class constructor
-            #what dis mean
+            #???
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
         # Setup empty sprite lists
@@ -30,7 +30,7 @@ class GameScreen(arcade.Window):
         """Create the game objects
         """
         # TODO: Check existing lengths
-            #scuzi? what dis mean?
+            #???
 
         # Add players
         self.player = Player()
@@ -42,7 +42,7 @@ class GameScreen(arcade.Window):
 
         # Add score
         self.score_label = arcade.Text(
-            str(self.score),
+            str(int(self.score)),
             0, Y_MAX - FONT_LINE_HEIGHT,
             arcade.color.BLACK,
             FONT_SIZE,
@@ -70,8 +70,8 @@ class GameScreen(arcade.Window):
         if symbol == arcade.key.UP:
             self.player.jump()
         #TODO: ducking?
-        if symbol == arcade.key.DOWN:
-            self.player.duck()
+        #if symbol == arcade.key.DOWN:
+            #self.player.duck()
 
     def update(self, dt):
         """ Movement and game logic """
@@ -83,15 +83,14 @@ class GameScreen(arcade.Window):
         self.player.update()
 
         # Update score
-        # TODO: Make scores smaller?
-        self.score += 1
-        self.score_label.text = str(self.score//10)
+        self.score += 0.1
+        self.score_label.text = str(int(self.score))
 
         # Do collision detection
         hitlist = self.player.collides_with_list(self.enemies_list)
         if len(hitlist) > 0:
             print('Game over.')
-            print(self.score, 'points')
+            print(int(self.score), 'points')
             self.close()
 
         # Save player location

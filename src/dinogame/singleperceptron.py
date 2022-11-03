@@ -1,7 +1,7 @@
 import random
 n_input=3 #number of inputs & weights
 weights = [random.uniform(-1,1) for x in range(n_input)] #list of weights
-inputs = [1]+[int(input()) for x in range(n_input-1)]#how to automate input? 
+inputs = [1]+[int(input("input?")) for x in range(n_input-1)]#how to automate input? 
 
 #print(weights)
 print(inputs)
