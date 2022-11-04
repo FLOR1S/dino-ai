@@ -14,7 +14,12 @@ class Player(arcade.Sprite):
     """Player object (probably a dinosaur)"""
 
     def __init__(self):
-        super().__init__('./resources/player/dino.png')
+        super().__init__()
+        self.sprites = []
+        self.sprites.append(arcade.load_texture('./resources/player/dino run 1.png'))
+        self.sprites.append(arcade.load_texture('./resources/player/dino run 2.png'))
+        self.current_sprite = 0
+        self.texture = self.sprites[self.current_sprite]
 
         # Set physics
         self.dt = 1.0
@@ -57,6 +62,17 @@ class Player(arcade.Sprite):
 
         self.center_x = self.sx
         self.center_y = self.sy
+
+        #update texture
+        self.current_sprite += 0.3
+        if self.current_sprite >= len(self.sprites):
+            self.current_sprite = 0
+
+        #als hij springt is de texture dino jump, anders rent hij (later ducking hier toevoegen)
+        if self.sy > GROUND_HEIGHT + self.height/2:
+            self.texture = arcade.load_texture('./resources/player/dino jump.png')
+        else:
+            self.texture = self.sprites[int(self.current_sprite)]
 
     def jump(self):
         # IDEA: On creation establish a baseline as an object property instead of a ground height
