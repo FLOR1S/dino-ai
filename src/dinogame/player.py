@@ -48,9 +48,6 @@ class Player(arcade.Sprite):
         self.sx = self.sx + self.vx * self.dt
         self.sy = self.sy + self.vy * self.dt
 
-        # TODO: Collision detection, probably automatable
-            #???
-
         # Handle ground
         if self.sy < GROUND_HEIGHT + self.height/2:
             self.sy = GROUND_HEIGHT + self.height/2
