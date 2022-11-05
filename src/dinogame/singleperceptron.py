@@ -18,7 +18,7 @@ class Perceptron:
         self.n_input = n_input
        
 #make a guess based on input and weight
-    def guess(inputs):
+    def guess(self, inputs):
         Sum = 0.0
         for i in range(self.n_input):
             Sum += float(inputs[i])*float(weights[i])
