@@ -78,12 +78,15 @@ class Player(arcade.Sprite):
         #als hij springt is de texture dino jump, anders rent hij (en ducking)
         if self.sy > GROUND_HEIGHT + self.height/2:
             self.texture = arcade.load_texture('./resources/player/dino jump.png')
-        elif self.ducking == True:
+        elif self.ducking == True and self.sy == GROUND_HEIGHT + self.height/2:
             self.texture = self.ducking_sprites[int(self.current_ducking_sprite)]
         else:
             self.texture = self.sprites[int(self.current_sprite)]
 
-
+        if self.ducking == True:
+            self.ay = GRAVITY - 3
+        else:
+            self.ay = GRAVITY
 
     def jump(self):
         # IDEA: On creation establish a baseline as an object property instead of a ground height

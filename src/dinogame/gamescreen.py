@@ -69,7 +69,7 @@ class GameScreen(arcade.Window):
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.UP or symbol == arcade.key.SPACE:
             self.player.jump()
-        if symbol == arcade.key.DOWN and self.player.sy == GROUND_HEIGHT + self.player.height/2:
+        if symbol == arcade.key.DOWN:
             self.player.ducking = True
 
 
