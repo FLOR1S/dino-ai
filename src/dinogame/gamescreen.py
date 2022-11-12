@@ -2,7 +2,48 @@ import arcade
 from dinogame import BACKGROUND_COLOR, FONT_LINE_HEIGHT, FONT_SIZE, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, MAX_ENEMY_COUNT, X_MIN, X_MAX, Y_MAX, AI
 from dinogame.player import Player
 from dinogame.enemy import Enemy
-from dinogame.player_perceptron import Perceptron
+import random
+
+
+"""
+Possible activation functions:
+    sign, +/-, jump or not
+    ?, _/_/_, jump, wait, duck
+"""
+
+
+def sign(n):
+    if n >= 0:
+        return 1
+    if n < 0:
+        return -1
+
+
+"""
+The perceptron class, variable number of inputs and activation function
+    takes inputs from game (inputs[] :15)
+    takes weights from solutions (weights[] :19)
+    outputs decision    
+"""
+inputs = [0,0,0]
+n_weights = len(inputs)  # number of inputs & weights (int)
+weights = [random.uniform(-1, 1) for w in range(n_weights)]
+
+
+class Perceptron:
+    def _init_(self, n_input=2):  # extra argument: actfunc?
+        self.n_input = n_input
+
+    # make a guess based on input and weight
+    def guess(self):
+        _sum = 0.0
+        for i in range(2):
+            _sum += inputs[i] * weights[i]
+
+        decision = sign(_sum)
+
+        return(decision)
+
 
 class GameScreen(arcade.Window):
     """Main game window
@@ -111,6 +152,18 @@ class GameScreen(arcade.Window):
             self.enemies_list.append(enemy)
 
         if AI:
+            bias = 1
+            # input, distance between player and obstacle (float)
+            # distance = Enemy.enemy.sx - Player.player.sx
+            ENEMY = self.enemies_list[0]
+            PLAYER = self.player
+
+            distance = ENEMY.sx - PLAYER.sx
+
+            # how to make sure that algorithm takes the right enemy? does it need the info from the gamescreen file instead?
+            inputs = [bias, distance, ENEMY.type]
+
+
             p = Perceptron()
             print(p.guess())
 
