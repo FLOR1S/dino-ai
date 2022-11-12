@@ -1,7 +1,5 @@
 import random
 from dinogame.gamescreen import GameScreen
-from dinogame.player import Player # we need this info from the game itself, don't we
-from dinogame.enemy import Enemy   # so from where then? game? gamescreen?
 # we also need to import the population, right? ehm. yea.
 
 
@@ -12,10 +10,14 @@ Perceptron that plays the game with the weights provided by the solutions of eac
 bias = 1
 # input, distance between player and obstacle (float)
 # distance = Enemy.enemy.sx - Player.player.sx
+ENEMY = GameScreen.enemies_list[0]
+PLAYER = GameScreen.player
+
+distance = ENEMY.sx - PLAYER.sx
 
 
 # how to make sure that algorithm takes the right enemy? does it need the info from the gamescreen file instead?
-inputs = [bias, distance, Enemy.enemy.type]
+inputs = [bias, distance, ENEMY.type]
 
 n_weights = len(inputs)  # number of inputs & weights (int)
 
@@ -27,11 +29,14 @@ Possible activation functions:
     sign, +/-, jump or not
     ?, _/_/_, jump, wait, duck
 """
+
+
 def sign(n):
     if n >= 0:
         return 1
     if n < 0:
         return -1
+
 
 """
 The perceptron class, variable number of inputs and activation function
@@ -39,6 +44,8 @@ The perceptron class, variable number of inputs and activation function
     takes weights from solutions (weights[] :19)
     outputs decision    
 """
+
+
 class Perceptron:
     def _init_(self, n_input, actfunc=sign):  # extra argument: actfunc?
         self.n_input = n_input
@@ -52,6 +59,6 @@ class Perceptron:
 
         decision = self.actfunc(_sum)
 
-        return decision
+        return(decision)
 
 
