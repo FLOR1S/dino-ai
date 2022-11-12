@@ -25,9 +25,11 @@ The perceptron class, variable number of inputs and activation function
     takes weights from solutions (weights[] :19)
     outputs decision    
 """
-inputs = [0,0,0]
-n_weights = len(inputs)  # number of inputs & weights (int)
-weights = [random.uniform(-1, 1) for w in range(n_weights)]
+
+
+n_weights = 3  # number of inputs & weights (int)
+weights = [25, -1, 0.5]
+# weights = [random.uniform(-1, 1) for w in range(n_weights)]
 
 
 class Perceptron:
@@ -35,7 +37,8 @@ class Perceptron:
         self.n_input = n_input
 
     # make a guess based on input and weight
-    def guess(self):
+    def guess(self,inputs):
+        self.inputs = inputs
         _sum = 0.0
         for i in range(2):
             _sum += inputs[i] * weights[i]
@@ -161,9 +164,9 @@ class GameScreen(arcade.Window):
             distance = ENEMY.sx - PLAYER.sx
 
             # how to make sure that algorithm takes the right enemy? does it need the info from the gamescreen file instead?
-            inputs = [bias, distance, ENEMY.type]
+            inputlist = [bias, distance, ENEMY.type]
 
 
             p = Perceptron()
-            print(p.guess())
+            print(p.guess(inputlist))
 
