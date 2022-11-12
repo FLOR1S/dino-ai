@@ -24,7 +24,7 @@ sol_per_pop = 8
 num_parents_mating = 4
 
 # Defining the population size.
-pop_size = (sol_per_pop,num_weights) # The population will have sol_per_pop chromosome where each chromosome has num_weights genes.
+pop_size = (sol_per_pop, num_weights) # The population will have sol_per_pop chromosome where each chromosome has num_weights genes.
 #Creating the initial population.
 new_population = numpy.random.uniform(low=-4.0, high=4.0, size=pop_size)
 print(new_population)

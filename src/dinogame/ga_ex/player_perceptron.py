@@ -1,7 +1,9 @@
 import random
+from dinogame.gamescreen import GameScreen
 from dinogame.player import Player # we need this info from the game itself, don't we
 from dinogame.enemy import Enemy   # so from where then? game? gamescreen?
 # we also need to import the population, right? ehm. yea.
+
 
 """
 Perceptron that plays the game with the weights provided by the solutions of each generation
@@ -9,7 +11,8 @@ Perceptron that plays the game with the weights provided by the solutions of eac
 
 bias = 1
 # input, distance between player and obstacle (float)
-distance = Enemy.enemy.sx - Player.player.sx
+# distance = Enemy.enemy.sx - Player.player.sx
+
 
 # how to make sure that algorithm takes the right enemy? does it need the info from the gamescreen file instead?
 inputs = [bias, distance, Enemy.enemy.type]
