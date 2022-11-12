@@ -21,6 +21,11 @@ class Player(arcade.Sprite):
         self.current_sprite = 0
         self.texture = self.sprites[self.current_sprite]
 
+        self.ducking_sprites = []
+        self.ducking_sprites.append(arcade.load_texture('./resources/player/dino_duck_1.png'))
+        self.ducking_sprites.append(arcade.load_texture('./resources/player/dino_duck_2.png'))
+        self.current_ducking_sprite = 0
+
         # Set physics
         self.dt = 1.0
         self.sx = PLAYER_X + self.width/2
@@ -29,6 +34,7 @@ class Player(arcade.Sprite):
         self.vy = 0
         self.ax = 0
         self.ay = GRAVITY
+        self.ducking = False
 
         # Update sprite location
         self.center_x = self.sx
@@ -64,12 +70,23 @@ class Player(arcade.Sprite):
         self.current_sprite += 0.3
         if self.current_sprite >= len(self.sprites):
             self.current_sprite = 0
+        #update ducking texture
+        self.current_ducking_sprite += 0.3
+        if self.current_ducking_sprite >= len(self.ducking_sprites):
+            self.current_ducking_sprite = 0
 
-        #als hij springt is de texture dino jump, anders rent hij (later ducking hier toevoegen)
+        #als hij springt is de texture dino jump, anders rent hij (en ducking)
         if self.sy > GROUND_HEIGHT + self.height/2:
             self.texture = arcade.load_texture('./resources/player/dino jump.png')
+        elif self.ducking == True and self.sy == GROUND_HEIGHT + self.height/2:
+            self.texture = self.ducking_sprites[int(self.current_ducking_sprite)]
         else:
             self.texture = self.sprites[int(self.current_sprite)]
+
+        if self.ducking == True:
+            self.ay = GRAVITY - 3
+        else:
+            self.ay = GRAVITY
 
     def jump(self):
         # IDEA: On creation establish a baseline as an object property instead of a ground height
