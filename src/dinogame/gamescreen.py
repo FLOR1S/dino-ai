@@ -1,8 +1,8 @@
 import arcade
-from dinogame import BACKGROUND_COLOR, FONT_LINE_HEIGHT, FONT_SIZE, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, MAX_ENEMY_COUNT, X_MIN, X_MAX, Y_MAX
+from dinogame import BACKGROUND_COLOR, FONT_LINE_HEIGHT, FONT_SIZE, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, MAX_ENEMY_COUNT, X_MIN, X_MAX, Y_MAX, AI
 from dinogame.player import Player
 from dinogame.enemy import Enemy
-
+from dinogame.player_perceptron import Perceptron
 
 class GameScreen(arcade.Window):
     """Main game window
@@ -109,3 +109,8 @@ class GameScreen(arcade.Window):
         if len(self.enemies_list) < MAX_ENEMY_COUNT:
             enemy = Enemy()
             self.enemies_list.append(enemy)
+
+        if AI:
+            p = Perceptron()
+            print(p.guess())
+
