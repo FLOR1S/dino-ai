@@ -95,14 +95,14 @@ class GameScreen(arcade.Window):
 
         # Save player location
         dx = self.player.sx
-        # Translate all enemies (with an inline list-compreshension loop)
+        # Translate all enemies (with an inline list-comprehension loop)
         [e.translate((- dx + PLAYER_X, 0)) for e in self.enemies_list]
         # Translate player
         self.player.translate((- dx + PLAYER_X, 0))
 
         # Add in new enemies if the enemies_list is no longer full
         # range() loop will be empty if no more enemies (or for negative ranges)
-        #for i in range(MAX_ENEMY_COUNT-len(self.enemies_list)):
+        # for i in range(MAX_ENEMY_COUNT-len(self.enemies_list)):
             #enemy = Enemy()
             #self.enemies_list.append(enemy)
             

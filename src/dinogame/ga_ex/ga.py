@@ -6,8 +6,8 @@ import numpy
 # PyGAD source code at GitHub: https://github.com/ahmedfgad/GeneticAlgorithmPython
 
 def cal_pop_fitness(equation_inputs, pop):
-    # Calculating the fitness value of each solution in the current population.
-    # The fitness function calculates the sum of products between each input and its corresponding weight.
+    # make the solutions play the game
+    # fitness = score
     fitness = numpy.sum(pop*equation_inputs, axis=1)
     return fitness
 
@@ -28,9 +28,9 @@ def crossover(parents, offspring_size):
 
     for k in range(offspring_size[0]):
         # Index of the first parent to mate.
-        parent1_idx = k%parents.shape[0]
+        parent1_idx = k % parents.shape[0]
         # Index of the second parent to mate.
-        parent2_idx = (k+1)%parents.shape[0]
+        parent2_idx = (k+1) % parents.shape[0]
         # The new offspring will have its first half of its genes taken from the first parent.
         offspring[k, 0:crossover_point] = parents[parent1_idx, 0:crossover_point]
         # The new offspring will have its second half of its genes taken from the second parent.
