@@ -5,15 +5,20 @@ from dinogame.gamescreen import GameScreen
 # Install PyGAD: pip install pygad
 # PyGAD source code at GitHub: https://github.com/ahmedfgad/GeneticAlgorithmPython
 
-def cal_pop_fitness(equation_inputs, pop):
+def cal_pop_fitness(pop):
     # make the solutions play the game
-    # fitness = score
-    #if __name__ == "__main__":
-        #game = GameScreen()
-        #game.setup()
-
-    fitness = numpy.sum(pop*equation_inputs, axis=1)
+    fitness = [0,0,0,0,0,0,0,0]
+    for sol in pop:
+        if __name__ == "__main__":
+            game = GameScreen()
+            game.setup()
+            print(game.score)
+            fitness[sol] = game.score
+            # fitness = numpy.sum(pop*equation_inputs, axis=1)
     return fitness
+
+
+
 
 def select_mating_pool(pop, fitness, num_parents):
     # Selecting the best individuals in the current generation as parents for producing the offspring of the next generation.
@@ -46,5 +51,5 @@ def mutation(offspring_crossover):
     for idx in range(offspring_crossover.shape[0]):
         # The random value to be added to the gene.
         random_value = numpy.random.uniform(-1.0, 1.0, 1)
-        offspring_crossover[idx, 4] = offspring_crossover[idx, 4] + random_value
+        offspring_crossover[idx, 2] = offspring_crossover[idx, 2] + random_value
     return offspring_crossover
