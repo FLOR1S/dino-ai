@@ -35,7 +35,7 @@ ENEMY_TYPES = [
     },
     {
         'image': './resources/enemies/bird.png',
-        'sy': 164, # Make birds appear at three different heights
+        'sy': 170, # Make birds appear at three different heights
         'vx': 0,
         'vy': 0,
         'ax': 0,

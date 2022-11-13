@@ -1,5 +1,5 @@
 import arcade
-from dinogame import BACKGROUND_COLOR, FONT_LINE_HEIGHT, FONT_SIZE, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, MAX_ENEMY_COUNT, X_MIN, X_MAX, Y_MAX, AI
+from dinogame import BACKGROUND_COLOR, FONT_LINE_HEIGHT, FONT_SIZE, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, MAX_ENEMY_COUNT, X_MIN, X_MAX, Y_MAX, AI, GROUND_HEIGHT
 from dinogame.player import Player
 from dinogame.enemy import Enemy
 import random
@@ -111,11 +111,17 @@ class GameScreen(arcade.Window):
         self.score_label.draw()
 
     def on_key_press(self, symbol: int, modifiers: int):
-        if symbol == arcade.key.UP:
+        if symbol == arcade.key.UP or symbol == arcade.key.SPACE:
             self.player.jump()
-        #TODO: ducking?
-        #if symbol == arcade.key.DOWN:
-            #self.player.duck()
+        if symbol == arcade.key.DOWN:
+            self.player.ducking = True
+
+
+    def on_key_release(self, symbol: int, modifiers: int):
+        if symbol == arcade.key.DOWN:
+            self.player.ducking = False
+
+
 
     def update(self, dt):
         """ Movement and game logic """
