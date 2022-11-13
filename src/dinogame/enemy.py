@@ -7,9 +7,10 @@ from dinogame import CUTOFF, X_MIN, X_MAX, GROUND_HEIGHT, ENEMY_TYPES, SPAWN_MIN
 class Enemy(arcade.Sprite):
     """Player object (probably a dinosaur)"""
 
-    def __init__(self):
+    def __init__(self, type=0):
         # Choose enemy type
-        self.type = randint(0, len(ENEMY_TYPES)-1)
+        #self.type = randint(0, len(ENEMY_TYPES)-1)
+        self.type = type
 
         super().__init__(ENEMY_TYPES[self.type]['image'], scale=0.5)
 

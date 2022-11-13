@@ -28,7 +28,7 @@ pop_size = (sol_per_pop, num_weights) # The population will have sol_per_pop chr
 new_population = numpy.random.uniform(low=-4.0, high=4.0, size=pop_size)
 print(new_population)
 
-num_generations = 5
+num_generations = 2
 for generation in range(num_generations):
     print("Generation : ", generation)
     # Measuring the fitness of each chromosome in the population.

@@ -1,4 +1,5 @@
 import numpy
+import arcade
 from dinogame.gamescreen import GameScreen
 # This project is extended and a library called PyGAD is released to build the genetic algorithm.
 # PyGAD documentation: https://pygad.readthedocs.io
@@ -11,6 +12,7 @@ def cal_pop_fitness(pop):
     for sol in pop:
         game = GameScreen()
         game.setup()
+        arcade.run()
         print(game.score)
         idx = numpy.where(pop == sol)[0]
         fitness[idx] = game.score
