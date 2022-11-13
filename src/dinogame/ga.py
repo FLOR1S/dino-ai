@@ -1,5 +1,5 @@
 import numpy
-
+from dinogame.gamescreen import GameScreen
 # This project is extended and a library called PyGAD is released to build the genetic algorithm.
 # PyGAD documentation: https://pygad.readthedocs.io
 # Install PyGAD: pip install pygad
@@ -8,6 +8,10 @@ import numpy
 def cal_pop_fitness(equation_inputs, pop):
     # make the solutions play the game
     # fitness = score
+    #if __name__ == "__main__":
+        #game = GameScreen()
+        #game.setup()
+
     fitness = numpy.sum(pop*equation_inputs, axis=1)
     return fitness
 

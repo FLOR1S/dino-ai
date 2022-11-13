@@ -1,5 +1,6 @@
 import numpy
-import ga
+import ga_setup as ga
+
 
 """
 The y=target is to maximize this equation ASAP:
