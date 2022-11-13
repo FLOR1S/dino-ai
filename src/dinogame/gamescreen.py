@@ -140,9 +140,9 @@ class GameScreen(arcade.Window):
         hitlist = self.player.collides_with_list(self.enemies_list)
         if len(hitlist) > 0:
             print('Game over.')
-            #print(int(self.score), 'points')
-            return int(self.score)
+            print(int(self.score), 'points')
             self.close()
+            return int(self.score)
 
         # Save player location
         dx = self.player.sx

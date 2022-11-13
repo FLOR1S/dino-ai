@@ -7,13 +7,13 @@ from dinogame.gamescreen import GameScreen
 
 def cal_pop_fitness(pop):
     # make the solutions play the game
-    fitness = [0,0,0,0,0,0,0,0]
+    fitness = numpy.empty(8)
     for sol in pop:
-        if __name__ == "__main__":
-            game = GameScreen()
-            game.setup()
-            print(game.score)
-            fitness[sol] = game.score
+        game = GameScreen()
+        game.setup()
+        print(game.score)
+        idx = numpy.where(pop == sol)[0]
+        fitness[idx] = game.score
             # fitness = numpy.sum(pop*equation_inputs, axis=1)
     return fitness
 
