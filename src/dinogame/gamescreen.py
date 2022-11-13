@@ -140,7 +140,8 @@ class GameScreen(arcade.Window):
         hitlist = self.player.collides_with_list(self.enemies_list)
         if len(hitlist) > 0:
             print('Game over.')
-            print(int(self.score), 'points')
+            #print(int(self.score), 'points')
+            return int(self.score)
             self.close()
 
         # Save player location
@@ -163,7 +164,6 @@ class GameScreen(arcade.Window):
         if AI:
             bias = 1
             # input, distance between player and obstacle (float)
-            # distance = Enemy.enemy.sx - Player.player.sx
             ENEMY = self.enemies_list[0]
             PLAYER = self.player
 
