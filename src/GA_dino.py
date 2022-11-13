@@ -1,5 +1,5 @@
 import numpy
-import ga_setup as ga
+import dinogame.ga_setup as ga
 
 
 """
@@ -58,5 +58,5 @@ fitness = ga.cal_pop_fitness(new_population)
 # Then return the index of that solution corresponding to the best fitness.
 best_match_idx = numpy.where(fitness == numpy.max(fitness))
 
-print("Best solution : ", new_population[best_match_idx, :])
-print("Best solution fitness : ", fitness[best_match_idx, :])
+print("Best solution : ", new_population[best_match_idx])
+print("Best solution fitness : ", numpy.max(fitness))
