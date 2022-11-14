@@ -80,4 +80,5 @@ DEBUG = False
 TIMINGS_COUNTER = 1000
 
 #AI
+
 AI = True

@@ -1,24 +1,27 @@
 import numpy
 import arcade
+
 from dinogame.gamescreen import GameScreen
 # This project is extended and a library called PyGAD is released to build the genetic algorithm.
 # PyGAD documentation: https://pygad.readthedocs.io
 # Install PyGAD: pip install pygad
 # PyGAD source code at GitHub: https://github.com/ahmedfgad/GeneticAlgorithmPython
 
+
 def cal_pop_fitness(pop):
     # make the solutions play the game
     fitness = numpy.empty(8)
-    for sol in pop:
-        game = GameScreen()
+    for idx, sol in enumerate(pop):
+        print(sol)
+        game = GameScreen(AI=True, weights=sol)
         game.setup()
         arcade.run()
         print(game.score)
-        idx = numpy.where(pop == sol)[0]
+        # idx = numpy.where(pop == sol)[0]
         fitness[idx] = game.score
-            # fitness = numpy.sum(pop*equation_inputs, axis=1)
+        print(fitness)
+        # fitness = numpy.sum(pop*equation_inputs, axis=1)
     return fitness
-
 
 
 
@@ -31,6 +34,8 @@ def select_mating_pool(pop, fitness, num_parents):
         parents[parent_num, :] = pop[max_fitness_idx, :]
         fitness[max_fitness_idx] = -99999999999
     return parents
+
+
 
 def crossover(parents, offspring_size):
     offspring = numpy.empty(offspring_size)
@@ -48,10 +53,13 @@ def crossover(parents, offspring_size):
         offspring[k, crossover_point:] = parents[parent2_idx, crossover_point:]
     return offspring
 
+
 def mutation(offspring_crossover):
     # Mutation changes a single gene in each offspring randomly.
     for idx in range(offspring_crossover.shape[0]):
         # The random value to be added to the gene.
         random_value = numpy.random.uniform(-1.0, 1.0, 1)
-        offspring_crossover[idx, 2] = offspring_crossover[idx, 2] + random_value
+        offspring_crossover[idx,
+                            2] = offspring_crossover[idx, 2] + random_value
     return offspring_crossover
+
