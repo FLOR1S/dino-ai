@@ -29,6 +29,7 @@ The perceptron class, variable number of inputs and activation function
 
 n_weights = 3  # number of inputs & weights (int)
 # weights = [25, -1, 0.5]
+
 # weights = [random.uniform(-1, 1) for w in range(n_weights)]
 
 
@@ -50,6 +51,7 @@ class Perceptron:
         return decision
 
 
+
 class GameScreen(arcade.Window):
     """Main game window
     """
@@ -60,6 +62,7 @@ class GameScreen(arcade.Window):
 
         # Call the parent class constructor
         # ???
+
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
         self.AI = AI
@@ -68,6 +71,7 @@ class GameScreen(arcade.Window):
         # Setup empty sprite lists
         # List of background objects [ground n such?]
         self.backgrounds_list = arcade.SpriteList()
+
         self.enemies_list = arcade.SpriteList()  # List of enemy objects
         self.player = None  # Create player in setup()
         self.score = 0
@@ -81,6 +85,7 @@ class GameScreen(arcade.Window):
         """
         # TODO: Check existing lengths
         # ???
+
 
         # Add players
         self.player = Player()
@@ -160,17 +165,20 @@ class GameScreen(arcade.Window):
         #enemy = Enemy()
         # self.enemies_list.append(enemy)
 
+
         if len(self.enemies_list) < MAX_ENEMY_COUNT:
             enemy = Enemy()
             self.enemies_list.append(enemy)
 
         if self.AI:
+
             bias = 1
             # input, distance between player and obstacle (float)
             ENEMY = self.enemies_list[0]
             PLAYER = self.player
 
             distance = (ENEMY.sx - PLAYER.sx)/25
+
 
             # how to make sure that algorithm takes the right enemy? does it need the info from the gamescreen file instead?
             inputlist = [bias, distance, ENEMY.type]
@@ -180,3 +188,4 @@ class GameScreen(arcade.Window):
             # print(decision)
             if decision == 1:
                 self.player.jump()
+

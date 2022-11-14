@@ -1,5 +1,6 @@
 import numpy
 import arcade
+
 from dinogame.gamescreen import GameScreen
 # This project is extended and a library called PyGAD is released to build the genetic algorithm.
 # PyGAD documentation: https://pygad.readthedocs.io
@@ -23,6 +24,7 @@ def cal_pop_fitness(pop):
     return fitness
 
 
+
 def select_mating_pool(pop, fitness, num_parents):
     # Selecting the best individuals in the current generation as parents for producing the offspring of the next generation.
     parents = numpy.empty((num_parents, pop.shape[1]))
@@ -32,6 +34,7 @@ def select_mating_pool(pop, fitness, num_parents):
         parents[parent_num, :] = pop[max_fitness_idx, :]
         fitness[max_fitness_idx] = -99999999999
     return parents
+
 
 
 def crossover(parents, offspring_size):
@@ -59,3 +62,4 @@ def mutation(offspring_crossover):
         offspring_crossover[idx,
                             2] = offspring_crossover[idx, 2] + random_value
     return offspring_crossover
+
