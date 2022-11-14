@@ -149,7 +149,7 @@ class GameScreen(arcade.Window):
         if len(hitlist) > 0:
             print('Game over.')
             print(int(self.score), 'points')
-            self.close()
+            arcade.close_window()
             return int(self.score)
 
         # Save player location

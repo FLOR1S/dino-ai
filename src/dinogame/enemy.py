@@ -9,15 +9,15 @@ class Enemy(arcade.Sprite):
 
     def __init__(self, type=0):
         # Choose enemy type
-        #self.type = randint(0, len(ENEMY_TYPES)-1)
-        self.type = type
+        self.type = randint(0, len(ENEMY_TYPES)-1)
+        #self.type = type
 
         super().__init__(ENEMY_TYPES[self.type]['image'], scale=0.5)
 
         # Set physics
         self.dt = 1.0
-        #self.sx = 500*randint(SPAWN_MIN_X//500, SPAWN_MAX_X//500) + self.width/2
-        self.sx = SPAWN_MIN_X + self.width/2
+        self.sx = 500*randint(SPAWN_MIN_X//500, SPAWN_MAX_X//500) + self.width/2
+        #self.sx = SPAWN_MIN_X + self.width/2
         self.sy = ENEMY_TYPES[self.type]['sy'] + self.height/2
         self.vx = ENEMY_TYPES[self.type]['vx']
         self.vy = ENEMY_TYPES[self.type]['vy']
