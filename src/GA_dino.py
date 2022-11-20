@@ -1,4 +1,5 @@
 import numpy
+import json
 import dinogame.ga_setup as ga
 
 # Number of the weights we are looking to optimize.
@@ -16,7 +17,9 @@ num_parents_mating = 4
 pop_size = (sol_per_pop, num_weights)  # The population will have sol_per_pop chromosome where each chromosome has
 # num_weights genes.
 # Creating the initial population.
-new_population = numpy.random.uniform(low=-4.0, high=4.0, size=pop_size)
+new_population = json.load("in.json","r")
+if new_population is not None:
+    new_population = numpy.random.uniform(low=-4.0, high=4.0, size=pop_size)
 print(new_population)
 
 
@@ -30,6 +33,8 @@ for generation in range(num_generations):
 
     # dump the best solution into file
     # file =
+    new_gen = dict(enumerate(new_population))
+    json.dump(new_gen, open("out.json", "w"))
 
     # Selecting the best parents in the population for mating.
     print(f'# Selecting the best parents in the population for mating.')
