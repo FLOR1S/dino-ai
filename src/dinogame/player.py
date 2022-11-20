@@ -1,14 +1,6 @@
 import arcade
 from dinogame import PLAYER_VX, PLAYER_X, X_MIN, X_MAX, GROUND_HEIGHT, JUMP_VELOCITY, GRAVITY
 
-# TODO: Set player state as either RUNNING, DUCKING or JUMPING with according sprites and sizes
-    #self.state or some shit?
-    #if self.sy > GROUND_HEIGHT + self.height/2 state = JUMPING
-    #if key.DOWN = pressed state = DUCKING
-    #else state = RUNNING
-# TODO: Add animation
-    #I have the PNG's for running and jumping
-
 
 class Player(arcade.Sprite):
     """Player object (probably a dinosaur)"""
@@ -66,24 +58,24 @@ class Player(arcade.Sprite):
         self.center_x = self.sx
         self.center_y = self.sy
 
-        #update texture
+        # update texture
         self.current_sprite += 0.3
         if self.current_sprite >= len(self.sprites):
             self.current_sprite = 0
-        #update ducking texture
+        # update ducking texture
         self.current_ducking_sprite += 0.3
         if self.current_ducking_sprite >= len(self.ducking_sprites):
             self.current_ducking_sprite = 0
 
-        #als hij springt is de texture dino jump, anders rent hij (en ducking)
+        # als hij springt is de texture dino jump, anders rent hij (en ducking)
         if self.sy > GROUND_HEIGHT + self.height/2:
             self.texture = arcade.load_texture('./resources/player/dino jump.png')
-        elif self.ducking == True and self.sy == GROUND_HEIGHT + self.height/2:
+        elif self.ducking and self.sy == GROUND_HEIGHT + self.height/2:
             self.texture = self.ducking_sprites[int(self.current_ducking_sprite)]
         else:
             self.texture = self.sprites[int(self.current_sprite)]
 
-        if self.ducking == True:
+        if self.ducking:
             self.ay = GRAVITY - 3
         else:
             self.ay = GRAVITY

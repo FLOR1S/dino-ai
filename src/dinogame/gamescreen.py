@@ -2,7 +2,6 @@ import arcade
 from dinogame import BACKGROUND_COLOR, FONT_LINE_HEIGHT, FONT_SIZE, PLAYER_X, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_TITLE, MAX_ENEMY_COUNT, X_MIN, X_MAX, Y_MAX, AI, GROUND_HEIGHT
 from dinogame.player import Player
 from dinogame.enemy import Enemy
-import random
 
 
 """
@@ -51,7 +50,6 @@ class Perceptron:
         return decision
 
 
-
 class GameScreen(arcade.Window):
     """Main game window
     """
@@ -83,9 +81,6 @@ class GameScreen(arcade.Window):
     def setup(self):
         """Create the game objects
         """
-        # TODO: Check existing lengths
-        # ???
-
 
         # Add players
         self.player = Player()
@@ -162,13 +157,13 @@ class GameScreen(arcade.Window):
         # Add in new enemies if the enemies_list is no longer full
         # range() loop will be empty if no more enemies (or for negative ranges)
         # for i in range(MAX_ENEMY_COUNT-len(self.enemies_list)):
-        #enemy = Enemy()
+        # enemy = Enemy()
         # self.enemies_list.append(enemy)
 
-
         if len(self.enemies_list) < MAX_ENEMY_COUNT:
-            enemy = Enemy()
-            self.enemies_list.append(enemy)
+            for i in range(MAX_ENEMY_COUNT - len(self.enemies_list)):
+                enemy = Enemy(enemies_list=self.enemies_list)
+                self.enemies_list.append(enemy)
 
         if self.AI:
 
@@ -179,8 +174,6 @@ class GameScreen(arcade.Window):
 
             distance = (ENEMY.sx - PLAYER.sx)/25
 
-
-            # how to make sure that algorithm takes the right enemy? does it need the info from the gamescreen file instead?
             inputlist = [bias, distance, ENEMY.type]
 
             p = Perceptron(weights=self.weights)
@@ -188,4 +181,3 @@ class GameScreen(arcade.Window):
             # print(decision)
             if decision == 1:
                 self.player.jump()
-

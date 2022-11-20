@@ -1,10 +1,8 @@
 import numpy
 import arcade
-
 from dinogame.gamescreen import GameScreen
 # This project is extended and a library called PyGAD is released to build the genetic algorithm.
 # PyGAD documentation: https://pygad.readthedocs.io
-# Install PyGAD: pip install pygad
 # PyGAD source code at GitHub: https://github.com/ahmedfgad/GeneticAlgorithmPython
 
 
@@ -12,29 +10,28 @@ def cal_pop_fitness(pop):
     # make the solutions play the game
     fitness = numpy.empty(8)
     for idx, sol in enumerate(pop):
-        print(sol)
+        # print(sol)
         game = GameScreen(AI=True, weights=sol)
         game.setup()
         arcade.run()
-        print(game.score)
+        # print(game.score)
         # idx = numpy.where(pop == sol)[0]
         fitness[idx] = game.score
-        print(fitness)
         # fitness = numpy.sum(pop*equation_inputs, axis=1)
+    print(fitness)
     return fitness
 
 
-
 def select_mating_pool(pop, fitness, num_parents):
-    # Selecting the best individuals in the current generation as parents for producing the offspring of the next generation.
+    # Selecting the best individuals in the current gen as parents for producing the offspring of the next generation
     parents = numpy.empty((num_parents, pop.shape[1]))
     for parent_num in range(num_parents):
         max_fitness_idx = numpy.where(fitness == numpy.max(fitness))
         max_fitness_idx = max_fitness_idx[0][0]
         parents[parent_num, :] = pop[max_fitness_idx, :]
         fitness[max_fitness_idx] = -99999999999
+    print(parents)
     return parents
-
 
 
 def crossover(parents, offspring_size):
@@ -59,7 +56,9 @@ def mutation(offspring_crossover):
     for idx in range(offspring_crossover.shape[0]):
         # The random value to be added to the gene.
         random_value = numpy.random.uniform(-1.0, 1.0, 1)
+        random_gene = numpy.random.randint(0,3)
         offspring_crossover[idx,
-                            2] = offspring_crossover[idx, 2] + random_value
+                            random_gene] = offspring_crossover[idx, random_gene] + random_value
+    print("#offspring")
+    print(offspring_crossover)
     return offspring_crossover
-
