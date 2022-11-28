@@ -12,7 +12,7 @@ class Enemy(arcade.Sprite):
         # self.type = type
 
         if enemies_list is not None:
-            spawn_min_x = max(SPAWN_MIN_X, enemies_list[-1].sx +500)
+            spawn_min_x = max(SPAWN_MIN_X, enemies_list[-1].sx + 750)
         else:
             spawn_min_x = SPAWN_MIN_X
 
@@ -21,7 +21,7 @@ class Enemy(arcade.Sprite):
         # Set physics
         self.dt = 1.0
         self.sx = randint(spawn_min_x, SPAWN_MAX_X) + self.width/2
-        #self.sx = SPAWN_MIN_X + self.width/2
+        # self.sx = SPAWN_MIN_X + self.width/2
         self.sy = ENEMY_TYPES[self.type]['sy'] + self.height/2
         self.vx = ENEMY_TYPES[self.type]['vx']
         self.vy = ENEMY_TYPES[self.type]['vy']

@@ -20,7 +20,7 @@ pop_size = (sol_per_pop, num_weights)  # The population will have sol_per_pop ch
 new_population = numpy.load("pop_gen_1.npy", "r+")
 # new_population = numpy.random.uniform(low=-4.0, high=4.0, size=pop_size)
 
-"""
+
 # Loop over population, extracting data
 pop_list = []
 for org in new_population:
@@ -35,7 +35,7 @@ with open('jpop_gen_0.json', "w") as f:
 
 # Dump numpy-object directly to file (can be loaded directly again)
 numpy.save('pop_gen_0', new_population, allow_pickle=False, fix_imports=False)
-"""
+
 
 num_generations = 1
 for generation in range(num_generations):

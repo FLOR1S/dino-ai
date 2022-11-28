@@ -129,6 +129,11 @@ class GameScreen(arcade.Window):
     def update(self, dt):
         """ Movement and game logic """
 
+        if len(self.enemies_list) < MAX_ENEMY_COUNT:
+            for i in range(MAX_ENEMY_COUNT - len(self.enemies_list)):
+                enemy = Enemy(enemies_list=self.enemies_list)
+                self.enemies_list.append(enemy)
+
         # Call update on all sprites (The sprites don't do much in this
         # example though.)
         self.backgrounds_list.update()
@@ -160,10 +165,6 @@ class GameScreen(arcade.Window):
         # enemy = Enemy()
         # self.enemies_list.append(enemy)
 
-        if len(self.enemies_list) < MAX_ENEMY_COUNT:
-            for i in range(MAX_ENEMY_COUNT - len(self.enemies_list)):
-                enemy = Enemy(enemies_list=self.enemies_list)
-                self.enemies_list.append(enemy)
 
         if self.AI:
 
