@@ -30,11 +30,11 @@ for org in new_population:
     pop_list.append(row)
 
 # Write list data to file
-with open('jpop_gen_0.json', "w") as f:
-    json.dump(pop_list, f)
+# with open('jpop_gen_0.json', "w") as f:
+     # json.dump(pop_list, f)
 
 # Dump numpy-object directly to file (can be loaded directly again)
-numpy.save('pop_gen_0', new_population, allow_pickle=False, fix_imports=False)
+# numpy.save('pop_gen_0', new_population, allow_pickle=False, fix_imports=False)
 
 
 num_generations = 1
@@ -49,7 +49,7 @@ for generation in range(num_generations):
     for score in fitness:
         fitness_list.append(score)
 
-    with open('jfitness_gen_0.json', "w") as f:
+    with open('jfitness_gen_1.json', "w") as f:
         json.dump(fitness_list, f)
 
     # Selecting the best parents in the population for mating.

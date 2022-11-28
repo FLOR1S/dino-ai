@@ -12,7 +12,7 @@ class Enemy(arcade.Sprite):
         # self.type = type
 
         if enemies_list is not None:
-            spawn_min_x = max(SPAWN_MIN_X, enemies_list[-1].sx + 750)
+            spawn_min_x = max(SPAWN_MIN_X, min(enemies_list[-1].sx + 750, SPAWN_MAX_X))
         else:
             spawn_min_x = SPAWN_MIN_X
 
